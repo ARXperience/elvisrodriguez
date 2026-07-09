@@ -35,6 +35,7 @@ export const productCategories: ProductCategory[] = [
 export const products: Product[] = [
   {
     id: "shampoo-matizador",
+    image: "/images/producto-shampoo-matizador.jpg",
     name: "Shampoo matizador para rubios",
     category: "Matizadores",
     description: "Ayuda a mantener tonos rubios fríos y luminosos.",
@@ -53,6 +54,7 @@ export const products: Product[] = [
   },
   {
     id: "protector-termico",
+    image: "/images/producto-protector-termico.jpg",
     name: "Protector térmico profesional",
     category: "Protección térmica",
     description: "Ideal antes de blower, plancha o herramientas de calor.",
@@ -62,6 +64,7 @@ export const products: Product[] = [
   },
   {
     id: "aceite-brillo",
+    image: "/images/producto-aceite-brillo.jpg",
     name: "Aceite capilar de brillo",
     category: "Styling",
     description: "Aporta brillo, suavidad y control de frizz.",
@@ -90,6 +93,7 @@ export const products: Product[] = [
   },
   {
     id: "crema-hidratante",
+    image: "/images/producto-crema-hidratante.jpg",
     name: "Crema hidratante capilar",
     category: "Hidratación",
     description: "Para cabellos secos, opacos o sensibilizados.",
@@ -108,6 +112,7 @@ export const products: Product[] = [
   },
   {
     id: "esmalte-profesional",
+    image: "/images/producto-esmalte.jpg",
     name: "Esmalte profesional",
     category: "Manicure y belleza",
     description: "Producto de belleza para acabado de manos.",

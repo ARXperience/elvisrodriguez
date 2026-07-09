@@ -5,6 +5,7 @@ import AuthoritySection from "@/components/AuthoritySection";
 import ServicesSection from "@/components/ServicesSection";
 import ColorDiagnosisSection from "@/components/ColorDiagnosisSection";
 import VideoGallery from "@/components/VideoGallery";
+import CinematicBanner from "@/components/CinematicBanner";
 import HomeCareSection from "@/components/HomeCareSection";
 import ProductStore from "@/components/ProductStore";
 import SmartAgendaSection from "@/components/SmartAgendaSection";
@@ -26,6 +27,7 @@ export default function HomePage() {
         <ServicesSection />
         <ColorDiagnosisSection />
         <VideoGallery />
+        <CinematicBanner />
         <HomeCareSection />
         <ProductStore />
         <SmartAgendaSection />

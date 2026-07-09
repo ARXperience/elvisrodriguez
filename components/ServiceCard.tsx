@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Service } from "@/data/services";
 import { waLink, waServiceMessage } from "@/lib/whatsapp";
 import SmartVideo from "@/components/SmartVideo";
@@ -16,9 +17,15 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             src={service.video}
             className="h-full w-full transition-transform duration-500 group-hover:scale-105"
             fallbackGradient={service.gradient}
-            autoPlay
-            loop
-            muted
+            ambient
+          />
+        ) : service.image ? (
+          <Image
+            src={service.image}
+            alt={service.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div

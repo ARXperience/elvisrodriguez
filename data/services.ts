@@ -4,6 +4,8 @@ export interface Service {
   description: string;
   /** Ruta de video opcional en /public (ej. /videos/elvis/balayage.mp4) */
   video?: string;
+  /** Imagen referencial (stock libre) si no hay video */
+  image?: string;
   /** Clases de gradiente para el placeholder visual premium */
   gradient: string;
   /** Emoji/símbolo decorativo del placeholder */
@@ -13,6 +15,7 @@ export interface Service {
 export const services: Service[] = [
   {
     id: "balayage",
+    image: "/images/servicio-balayage.jpg",
     name: "Balayage",
     description:
       "Técnica de iluminación personalizada para lograr transiciones suaves, luminosas y naturales.",
@@ -21,6 +24,7 @@ export const services: Service[] = [
   },
   {
     id: "rubios",
+    image: "/images/servicio-rubios.jpg",
     name: "Rubios",
     description:
       "Diseño de rubios con diagnóstico previo, cuidado capilar y mantenimiento profesional.",
@@ -29,6 +33,7 @@ export const services: Service[] = [
   },
   {
     id: "correccion-color",
+    image: "/images/servicio-correccion-color.jpg",
     name: "Corrección de color",
     description:
       "Procesos técnicos para recuperar, equilibrar o transformar el tono del cabello de forma responsable.",
@@ -37,6 +42,7 @@ export const services: Service[] = [
   },
   {
     id: "tratamientos",
+    image: "/images/servicio-tratamientos.jpg",
     name: "Tratamientos capilares",
     description:
       "Rutinas de reparación, hidratación y conservación para mantener el cabello saludable.",
@@ -45,6 +51,7 @@ export const services: Service[] = [
   },
   {
     id: "cortes",
+    image: "/images/servicio-cortes.jpg",
     name: "Cortes de cabello",
     description:
       "Cortes personalizados según rostro, estilo y movimiento natural del cabello.",
@@ -53,6 +60,7 @@ export const services: Service[] = [
   },
   {
     id: "manicure",
+    image: "/images/servicio-manicure.jpg",
     name: "Manicure",
     description:
       "Cuidado estético de manos con acabados limpios, elegantes y modernos.",
@@ -61,6 +69,7 @@ export const services: Service[] = [
   },
   {
     id: "spa",
+    image: "/images/servicio-spa.jpg",
     name: "Spa y estética",
     description:
       "Servicios complementarios de bienestar y belleza integral.",
@@ -69,6 +78,7 @@ export const services: Service[] = [
   },
   {
     id: "productos",
+    image: "/images/servicio-productos.jpg",
     name: "Productos profesionales",
     description:
       "Recomendaciones para cuidar el color, proteger la fibra capilar y mantener resultados en casa.",

@@ -8,9 +8,11 @@ import {
   type ProductCategory,
 } from "@/data/products";
 import { waLink, WA_MESSAGES } from "@/lib/whatsapp";
+import { storeBannerVideo } from "@/data/videos";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import QuoteCart from "@/components/QuoteCart";
+import SmartVideo from "@/components/SmartVideo";
 import { WhatsAppIcon } from "@/components/icons";
 
 type Filter = "Todos" | ProductCategory;
@@ -57,6 +59,25 @@ export default function ProductStore() {
             Catálogo demostrativo — cotiza por WhatsApp, sin pagos en línea
           </p>
         </Reveal>
+
+        {/* Video de campaña de la tienda */}
+        {storeBannerVideo && (
+          <Reveal className="mt-10">
+            <div className="relative overflow-hidden rounded-3xl border border-noir/5 shadow-card">
+              <SmartVideo
+                src={storeBannerVideo.src}
+                poster={storeBannerVideo.poster}
+                className="aspect-video w-full sm:aspect-[21/9]"
+                fallbackGradient={storeBannerVideo.gradient}
+                ambient
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-noir/60 via-transparent to-transparent" />
+              <p className="absolute bottom-4 left-5 rounded-full bg-noir/70 px-4 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold-200 backdrop-blur-sm sm:bottom-6 sm:left-7">
+                Cuidado profesional para tu casa
+              </p>
+            </div>
+          </Reveal>
+        )}
 
         {/* Filtro por categorías */}
         <Reveal className="mt-10">

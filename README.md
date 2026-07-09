@@ -69,6 +69,33 @@ lib/
   whatsapp.ts           # Construcción de enlaces wa.me con mensajes
 ```
 
+## Diseño en torno a los videos
+
+`scripts/sync-videos.mjs` analiza cada archivo de `public/videos/elvis/`:
+lee la **resolución real** del contenedor MP4 (16:9 vs 9:16, incluida la
+rotación de videos de celular) y clasifica el contenido por el nombre del
+archivo. Con eso la web distribuye los videos automáticamente:
+
+| Bloque | Video que recibe |
+|---|---|
+| Hero (fondo) | nombre con `hero`/`portada`/`principal`, o video de salón horizontal |
+| Autoridad ("trabajo real del salón") | estilista/colorista horizontal |
+| Banner cinematográfico | cabello en movimiento / cámara lenta horizontal |
+| "Lleva el cuidado a casa" | primer video de producto/campaña |
+| Cabecera de la tienda | segundo video de producto/campaña |
+| Galería "Transformaciones" | el resto: 9:16 como reels, 16:9 como cards anchas |
+
+Los videos decorativos usan modo *ambient*: se reproducen solo mientras
+están visibles en pantalla (ahorra datos y batería).
+
+## Imágenes
+
+Las fotos de `public/images/` (servicios, productos y blog) son imágenes
+referenciales de [Unsplash](https://unsplash.com/license) (licencia libre
+para uso comercial, sin atribución obligatoria), elegidas por contexto.
+Son un recurso de demo: reemplázalas por fotos reales del salón cuando
+estén disponibles — basta con sobrescribir el archivo manteniendo el nombre.
+
 ## Notas importantes
 
 - **La tienda es una simulación**: no integra pagos reales. Los botones

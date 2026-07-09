@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Product } from "@/data/products";
 import { waLink, waProductMessage } from "@/lib/whatsapp";
 import { WhatsAppIcon, CheckIcon, BagIcon } from "@/components/icons";
@@ -19,17 +20,27 @@ export default function ProductCard({
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-noir/5 bg-ivory-50 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
       {/* Imagen del producto o placeholder visual premium */}
       <div className="relative aspect-square overflow-hidden">
-        <div
-          className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${product.gradient} transition-transform duration-500 group-hover:scale-105`}
-          aria-hidden="true"
-        >
-          <div className="absolute inset-0 opacity-25 [background-image:radial-gradient(circle_at_30%_25%,white,transparent_50%)]" />
-          {/* Silueta minimalista de envase */}
-          <div className="relative flex flex-col items-center">
-            <div className="h-4 w-7 rounded-t-md bg-ivory-50/70" />
-            <div className="h-24 w-16 rounded-xl bg-ivory-50/50 shadow-inner backdrop-blur-[1px]" />
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div
+            className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${product.gradient} transition-transform duration-500 group-hover:scale-105`}
+            aria-hidden="true"
+          >
+            <div className="absolute inset-0 opacity-25 [background-image:radial-gradient(circle_at_30%_25%,white,transparent_50%)]" />
+            {/* Silueta minimalista de envase */}
+            <div className="relative flex flex-col items-center">
+              <div className="h-4 w-7 rounded-t-md bg-ivory-50/70" />
+              <div className="h-24 w-16 rounded-xl bg-ivory-50/50 shadow-inner backdrop-blur-[1px]" />
+            </div>
           </div>
-        </div>
+        )}
         <span className="absolute left-3 top-3 rounded-full bg-noir/80 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-gold-200 backdrop-blur-sm">
           {product.tag}
         </span>

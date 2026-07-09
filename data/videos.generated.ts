@@ -1,20 +1,21 @@
 /**
  * ARCHIVO GENERADO AUTOMÁTICAMENTE por scripts/sync-videos.mjs — no editar a mano.
  * Se regenera en cada `npm run dev` / `npm run build` según los archivos
- * presentes en public/videos/elvis/.
+ * presentes en public/videos/elvis/ (incluye análisis de resolución real).
  */
 
-export interface GeneratedVideoSource {
+export type VideoOrientation = "horizontal" | "vertical" | "unknown";
+export type VideoKind = "product" | "salon" | "people";
+
+export interface GeneratedVideoEntry {
+  name: string;
   src: string;
   poster: string | null;
+  orientation: VideoOrientation;
+  width: number | null;
+  height: number | null;
+  kind: VideoKind;
+  isHero: boolean;
 }
 
-export interface GeneratedVideos {
-  hero: GeneratedVideoSource | null;
-  gallery: GeneratedVideoSource[];
-}
-
-export const generatedVideos: GeneratedVideos = {
-  "hero": null,
-  "gallery": []
-};
+export const generatedVideoEntries: GeneratedVideoEntry[] = [];

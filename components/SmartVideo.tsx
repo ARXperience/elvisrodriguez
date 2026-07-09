@@ -14,12 +14,18 @@ interface SmartVideoProps {
   loop?: boolean;
   muted?: boolean;
   controls?: boolean;
+  /**
+   * Modo ambiente: video decorativo en loop silencioso que solo se
+   * reproduce mientras está visible en pantalla (ahorra batería/datos
+   * cuando hay varios videos en la página).
+   */
+  ambient?: boolean;
 }
 
 /**
  * Video HTML5 con carga diferida y degradación elegante: si el archivo
- * no está disponible (aún no se copian los videos a /public/videos/elvis),
- * muestra un placeholder visual premium en lugar de romperse.
+ * no está disponible, muestra un placeholder visual premium en lugar
+ * de romperse.
  */
 export default function SmartVideo({
   src,
@@ -31,6 +37,7 @@ export default function SmartVideo({
   loop = true,
   muted = true,
   controls = false,
+  ambient = false,
 }: SmartVideoProps) {
   const [failed, setFailed] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,6 +58,26 @@ export default function SmartVideo({
     video.addEventListener("error", markFailed);
     return () => video.removeEventListener("error", markFailed);
   }, []);
+
+  // Modo ambiente: reproducir solo mientras el video está en viewport.
+  useEffect(() => {
+    if (!ambient || failed) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [ambient, failed]);
 
   if (failed) {
     return (
@@ -73,9 +100,9 @@ export default function SmartVideo({
       preload="metadata"
       playsInline
       autoPlay={autoPlay}
-      loop={loop}
-      muted={muted}
-      controls={controls}
+      loop={ambient ? true : loop}
+      muted={ambient ? true : muted}
+      controls={ambient ? false : controls}
       onError={() => setFailed(true)}
     >
       Tu navegador no soporta video HTML5.
