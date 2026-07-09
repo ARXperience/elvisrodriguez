@@ -26,10 +26,29 @@ Abre [http://localhost:3000](http://localhost:3000).
 Otros comandos:
 
 ```bash
-npm run build      # build de producción
-npm run start      # servir el build
+npm run build      # genera el sitio estático en la carpeta out/
 npm run typecheck  # verificación de TypeScript
 ```
+
+## Publicar en Hostinger (o cualquier hosting estático)
+
+El proyecto está configurado con `output: "export"`: `npm run build` genera
+la carpeta **`out/`** con HTML/CSS/JS puros — no necesita Node.js en el
+servidor.
+
+1. Copia tus videos a `public/videos/elvis/` (se incluyen en el build).
+2. Ejecuta `npm run build`.
+3. Sube **el contenido** de la carpeta `out/` (no la carpeta en sí) a
+   `public_html` con el Administrador de archivos de hPanel o por FTP:
+   `index.html`, `404.html`, `_next/`, `images/`, `videos/`.
+4. Abre tu dominio: la web queda funcionando, incluidos videos, tienda,
+   cotización por WhatsApp y animaciones.
+
+> Importante: comprime los videos antes del build (ver
+> `public/videos/elvis/README.md`) — en hosting compartido los archivos
+> pesados hacen lenta la primera carga. Cada vez que cambies videos,
+> imágenes o textos, vuelve a ejecutar `npm run build` y sube de nuevo el
+> contenido de `out/`.
 
 ## Integrar los videos de Elvis
 
