@@ -28,15 +28,24 @@ export interface VideoItem {
   gradient: string;
 }
 
-/** Video destacado del hero (se usa como fondo si existe). */
-export const heroVideo: VideoItem = {
-  id: "hero",
-  src: generatedVideos.hero?.src ?? "/videos/elvis/hero.mp4",
-  poster: generatedVideos.hero?.poster ?? undefined,
-  title: "Elvis Rodríguez trabajando color",
-  orientation: "horizontal",
-  gradient: "from-noir via-noir-soft to-gold-700",
-};
+/** Gradiente de fondo del hero cuando no hay video asignado. */
+export const heroGradient = "from-noir via-noir-soft to-gold-700";
+
+/**
+ * Video destacado del hero, o null si ningún archivo de
+ * public/videos/elvis/ contiene "hero"/"portada"/"principal" en el nombre.
+ * Sin video, el hero usa su fondo visual elegante (sin peticiones fallidas).
+ */
+export const heroVideo: VideoItem | null = generatedVideos.hero
+  ? {
+      id: "hero",
+      src: generatedVideos.hero.src,
+      poster: generatedVideos.hero.poster ?? undefined,
+      title: "Elvis Rodríguez trabajando color",
+      orientation: "horizontal",
+      gradient: heroGradient,
+    }
+  : null;
 
 /** Títulos curados para las cards de la galería, en orden de asignación. */
 const galleryTitles: Array<{

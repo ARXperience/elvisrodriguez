@@ -1,22 +1,31 @@
 import { waLink, WA_MESSAGES } from "@/lib/whatsapp";
-import { heroVideo } from "@/data/videos";
+import { heroGradient, heroVideo } from "@/data/videos";
 import SmartVideo from "@/components/SmartVideo";
 import { WhatsAppIcon } from "@/components/icons";
 
 export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-noir text-ivory-50">
-      {/* Video o placeholder de fondo */}
+      {/* Video o fondo visual */}
       <div className="absolute inset-0 -z-10">
-        <SmartVideo
-          src={heroVideo.src}
-          poster={heroVideo.poster}
-          className="h-full w-full"
-          fallbackGradient={heroVideo.gradient}
-          autoPlay
-          loop
-          muted
-        />
+        {heroVideo ? (
+          <SmartVideo
+            src={heroVideo.src}
+            poster={heroVideo.poster}
+            className="h-full w-full"
+            fallbackGradient={heroVideo.gradient}
+            autoPlay
+            loop
+            muted
+          />
+        ) : (
+          <div
+            className={`h-full w-full bg-gradient-to-br ${heroGradient}`}
+            aria-hidden="true"
+          >
+            <div className="h-full w-full opacity-20 [background-image:radial-gradient(circle_at_30%_20%,white,transparent_55%)]" />
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-r from-noir/85 via-noir/60 to-noir/30" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-noir/70 to-transparent" />
       </div>
