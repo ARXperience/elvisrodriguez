@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { Product } from "@/data/products";
 import { waLink, waProductMessage } from "@/lib/whatsapp";
+import { withBase } from "@/lib/paths";
 import { WhatsAppIcon, CheckIcon, BagIcon } from "@/components/icons";
 
 interface ProductCardProps {
@@ -22,7 +23,7 @@ export default function ProductCard({
       <div className="relative aspect-square overflow-hidden">
         {product.image ? (
           <Image
-            src={product.image}
+            src={withBase(product.image)}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

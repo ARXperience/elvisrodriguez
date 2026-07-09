@@ -39,10 +39,14 @@ servidor.
 1. Copia tus videos a `public/videos/elvis/` (se incluyen en el build).
 2. Ejecuta `npm run build`.
 3. Sube **el contenido** de la carpeta `out/` (no la carpeta en sí) a
-   `public_html` con el Administrador de archivos de hPanel o por FTP:
-   `index.html`, `404.html`, `_next/`, `images/`, `videos/`.
-4. Abre tu dominio: la web queda funcionando, incluidos videos, tienda,
-   cotización por WhatsApp y animaciones.
+   `public_html/elvis` con el Administrador de archivos de hPanel o por
+   FTP: `index.html`, `404.html`, `_next/`, `images/`, `videos/`.
+4. Abre `tudominio.com/elvis`: la web queda funcionando, incluidos videos,
+   tienda, cotización por WhatsApp y animaciones.
+
+> La web está configurada para vivir en la subcarpeta `/elvis` (ver
+> `basePath` en `next.config.mjs`). Si algún día se mueve a la raíz del
+> dominio, cambia `basePath` a `""` y vuelve a hacer el build.
 
 > Importante: comprime los videos antes del build (ver
 > `public/videos/elvis/README.md`) — en hosting compartido los archivos

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { withBase } from "@/lib/paths";
 
 interface BlogPost {
   title: string;
@@ -67,7 +68,7 @@ export default function BlogSection() {
                 <div className="relative aspect-[16/9] overflow-hidden">
                   {post.image ? (
                     <Image
-                      src={post.image}
+                      src={withBase(post.image)}
                       alt=""
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

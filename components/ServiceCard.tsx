@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Service } from "@/data/services";
 import { waLink, waServiceMessage } from "@/lib/whatsapp";
 import SmartVideo from "@/components/SmartVideo";
+import { withBase } from "@/lib/paths";
 import { WhatsAppIcon } from "@/components/icons";
 
 interface ServiceCardProps {
@@ -21,7 +22,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           />
         ) : service.image ? (
           <Image
-            src={service.image}
+            src={withBase(service.image)}
             alt={service.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

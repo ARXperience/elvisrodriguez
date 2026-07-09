@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { withBase } from "@/lib/paths";
 
 interface SmartVideoProps {
   src: string;
@@ -95,8 +96,8 @@ export default function SmartVideo({
     <video
       ref={videoRef}
       className={`object-cover ${className}`}
-      src={src}
-      poster={poster}
+      src={withBase(src)}
+      poster={poster ? withBase(poster) : undefined}
       preload="metadata"
       playsInline
       autoPlay={autoPlay}
