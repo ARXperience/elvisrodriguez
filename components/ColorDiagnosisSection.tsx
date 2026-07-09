@@ -30,7 +30,7 @@ export default function ColorDiagnosisSection() {
     <section id="colorimetria" className="scroll-mt-24 bg-noir py-20 text-ivory-50 sm:py-28">
       <div className="container-content">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <Reveal direction="left">
+          <Reveal>
             <span className="section-eyebrow !text-gold-300">Colorimetría</span>
             <h2 className="font-display text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl">
               Antes de cambiar tu color, hacemos diagnóstico
@@ -55,7 +55,7 @@ export default function ColorDiagnosisSection() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {steps.map((step, i) => (
-              <Reveal key={step.number} delay={i * 110} direction={i % 2 === 0 ? "up" : "right"}>
+              <Reveal key={step.number} delay={i * 110}>
                 <div className="h-full rounded-2xl border border-ivory-50/10 bg-ivory-50/5 p-6 backdrop-blur-sm transition-colors hover:border-gold-300/40">
                   <span className="font-display text-3xl text-gold-300">
                     {step.number}

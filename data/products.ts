@@ -45,7 +45,6 @@ export const products: Product[] = [
   },
   {
     id: "mascarilla-reparadora",
-    image: "/images/producto-mascarilla.jpg",
     name: "Mascarilla reparadora intensiva",
     category: "Reparación capilar",
     description: "Tratamiento de nutrición profunda para cabellos procesados.",
@@ -75,7 +74,6 @@ export const products: Product[] = [
   },
   {
     id: "tratamiento-post-color",
-    image: "/images/producto-post-color.jpg",
     name: "Tratamiento post color",
     category: "Cuidado del color",
     description:
@@ -86,7 +84,6 @@ export const products: Product[] = [
   },
   {
     id: "kit-rubios",
-    image: "/images/producto-kit-rubios.jpg",
     name: "Kit mantenimiento de rubios",
     category: "Cuidado del color",
     description: "Rutina sugerida para mantener el rubio entre citas.",
@@ -106,7 +103,6 @@ export const products: Product[] = [
   },
   {
     id: "serum-antifrizz",
-    image: "/images/producto-serum-antifrizz.jpg",
     name: "Serum antifrizz",
     category: "Control de frizz",
     description: "Ayuda a controlar el volumen y mejorar el acabado.",
@@ -126,7 +122,6 @@ export const products: Product[] = [
   },
   {
     id: "kit-rutina-personalizada",
-    image: "/images/producto-kit-personalizado.jpg",
     name: "Kit de rutina capilar personalizada",
     category: "Cuidado del color",
     description:

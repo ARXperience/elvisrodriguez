@@ -33,7 +33,7 @@ export default function SmartAgendaSection() {
     <section id="agenda" className="scroll-mt-24 bg-ivory-50 py-20 sm:py-28">
       <div className="container-content">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <Reveal direction="left">
+          <Reveal>
             <span className="section-eyebrow">Agenda inteligente</span>
             <h2 className="section-title">
               Agenda tu cita sin esperar respuesta manual
@@ -71,7 +71,7 @@ export default function SmartAgendaSection() {
           </Reveal>
 
           {/* Simulación visual de chat */}
-          <Reveal delay={150} direction="right">
+          <Reveal delay={150}>
             <div className="mx-auto max-w-md overflow-hidden rounded-3xl border border-noir/10 bg-ivory-200 shadow-card">
               <div className="flex items-center gap-3 bg-noir px-5 py-4 text-ivory-50">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-500 font-display text-sm font-semibold">

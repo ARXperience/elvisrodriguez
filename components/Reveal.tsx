@@ -2,31 +2,15 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-type RevealDirection = "up" | "left" | "right" | "zoom";
-
 interface RevealProps {
   children: ReactNode;
   className?: string;
   /** Retardo en ms para escalonar animaciones dentro de una misma sección */
   delay?: number;
-  /** Dirección de entrada: vertical (up), lateral (left/right) o zoom */
-  direction?: RevealDirection;
 }
 
-const directionClass: Record<RevealDirection, string> = {
-  up: "",
-  left: "reveal-left",
-  right: "reveal-right",
-  zoom: "reveal-zoom",
-};
-
 /** Envuelve contenido y lo revela con una animación suave al entrar en viewport. */
-export default function Reveal({
-  children,
-  className = "",
-  delay = 0,
-  direction = "up",
-}: RevealProps) {
+export default function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -52,7 +36,7 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={`reveal ${directionClass[direction]} ${className}`}
+      className={`reveal ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

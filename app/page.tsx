@@ -1,7 +1,6 @@
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import AuthoritySection from "@/components/AuthoritySection";
 import ServicesSection from "@/components/ServicesSection";
 import ColorDiagnosisSection from "@/components/ColorDiagnosisSection";
@@ -24,7 +23,6 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <Marquee variant="dark" />
         <AuthoritySection />
         <ServicesSection />
         <ColorDiagnosisSection />
@@ -36,7 +34,6 @@ export default function HomePage() {
         <TestimonialsSection />
         <LocationSection />
         <BlogSection />
-        <Marquee variant="light" />
         <FinalCTA />
       </main>
       <Footer />
