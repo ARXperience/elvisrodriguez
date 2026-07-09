@@ -31,7 +31,7 @@ export default function HomeCareSection() {
                 </div>
               )}
             </div>
-            <Reveal className="px-7 py-12 sm:px-12 sm:py-16">
+            <Reveal direction="right" className="px-7 py-12 sm:px-12 sm:py-16">
               <span className="section-eyebrow">Mantenimiento</span>
               <h2 className="section-title !text-3xl sm:!text-4xl">
                 Lleva el cuidado profesional a casa

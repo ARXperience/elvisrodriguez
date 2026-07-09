@@ -45,9 +45,7 @@ function GalleryCard({
               </span>
             </div>
           }
-          controls
-          loop
-          muted
+          ambient
         />
         <figcaption className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-noir/70 via-noir/30 to-transparent p-5 pb-14">
           <h3 className="font-display text-lg font-medium text-ivory-50">

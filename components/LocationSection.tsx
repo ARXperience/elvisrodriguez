@@ -20,7 +20,7 @@ export default function LocationSection() {
     <section id="ubicacion" className="scroll-mt-24 bg-ivory-50 py-20 sm:py-28">
       <div className="container-content">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal direction="left">
             <span className="section-eyebrow">Ubicación</span>
             <h2 className="section-title">Visítanos en Cota</h2>
             <p className="section-subtitle">
@@ -59,7 +59,7 @@ export default function LocationSection() {
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
+          <Reveal delay={150} direction="right">
             {MAPS_EMBED_URL ? (
               <div className="overflow-hidden rounded-3xl border border-noir/10 shadow-card">
                 <iframe

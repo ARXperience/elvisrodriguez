@@ -28,7 +28,7 @@ export default function AuthoritySection() {
         {craftVideo ? (
           /* Diseño editorial: video del trabajo real junto al mensaje */
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-            <Reveal>
+            <Reveal direction="left">
               <div className="relative overflow-hidden rounded-3xl border border-noir/5 shadow-card">
                 <SmartVideo
                   src={craftVideo.src}
@@ -44,7 +44,7 @@ export default function AuthoritySection() {
             </Reveal>
 
             <div>
-              <Reveal>
+              <Reveal direction="right">
                 <span className="section-eyebrow">
                   Elvis Rodríguez Peluquería
                 </span>
@@ -64,7 +64,7 @@ export default function AuthoritySection() {
 
               <div className="mt-9 space-y-4">
                 {highlights.map((item, i) => (
-                  <Reveal key={item.title} delay={i * 110}>
+                  <Reveal key={item.title} delay={i * 110} direction="right">
                     <div className="flex items-start gap-4 rounded-2xl border border-noir/5 bg-ivory-100 px-5 py-4 shadow-card transition-shadow hover:shadow-card-hover">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold-50">
                         {item.icon}
