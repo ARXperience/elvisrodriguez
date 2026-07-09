@@ -28,3 +28,6 @@ next-env.d.ts
 public/videos/elvis/*.mp4
 public/videos/elvis/*.mov
 public/videos/elvis/*.webm
+
+# manifest de videos generado localmente por scripts/sync-videos.mjs
+data/videos.generated.ts

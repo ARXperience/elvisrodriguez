@@ -9,6 +9,7 @@
     "prebuild": "node scripts/sync-videos.mjs",
     "build": "next build",
     "sync-videos": "node scripts/sync-videos.mjs",
+    "pretypecheck": "node scripts/sync-videos.mjs",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
