@@ -19,7 +19,7 @@ export default function TestimonialsSection() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <Reveal key={i} delay={i * 110}>
+            <Reveal key={i} delay={i * 110} direction={["left", "up", "right"][i - 1] as "left" | "up" | "right"}>
               <figure className="flex h-full flex-col justify-between rounded-2xl border border-dashed border-gold-300/70 bg-ivory-50 p-7">
                 <div className="font-display text-4xl text-gold-300" aria-hidden="true">
                   “
@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
-        <Reveal className="mt-12">
+        <Reveal direction="zoom" className="mt-12">
           <div className="grid gap-4 rounded-2xl bg-ivory-50 p-6 shadow-card sm:grid-cols-2 lg:grid-cols-4 lg:p-8">
             {trustPoints.map((point) => (
               <div key={point} className="flex items-center gap-3">

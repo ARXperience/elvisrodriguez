@@ -51,7 +51,7 @@ export default function BlogSection() {
   return (
     <section className="bg-ivory-100 py-20 sm:py-28">
       <div className="container-content">
-        <Reveal className="max-w-2xl">
+        <Reveal direction="left" className="max-w-2xl">
           <span className="section-eyebrow">Tips &amp; cuidado</span>
           <h2 className="section-title">Aprende a cuidar tu color</h2>
           <p className="section-subtitle">
@@ -62,7 +62,7 @@ export default function BlogSection() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, i) => (
-            <Reveal key={post.title} delay={(i % 3) * 110}>
+            <Reveal key={post.title} delay={(i % 3) * 110} direction={["left", "up", "right"][i % 3] as "left" | "up" | "right"}>
               <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-noir/5 bg-ivory-50 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   {post.image ? (

@@ -62,7 +62,7 @@ export default function ProductStore() {
 
         {/* Video de campaña de la tienda */}
         {storeBannerVideo && (
-          <Reveal className="mt-10">
+          <Reveal direction="zoom" className="mt-10">
             <div className="relative overflow-hidden rounded-3xl border border-noir/5 shadow-card">
               <SmartVideo
                 src={storeBannerVideo.src}
@@ -103,7 +103,7 @@ export default function ProductStore() {
         {/* Grid de productos */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((product, i) => (
-            <Reveal key={product.id} delay={(i % 4) * 90}>
+            <Reveal key={product.id} delay={(i % 4) * 90} direction={i % 2 === 0 ? "up" : "zoom"}>
               <ProductCard
                 product={product}
                 inQuote={quote.some((p) => p.id === product.id)}
@@ -114,7 +114,7 @@ export default function ProductStore() {
         </div>
 
         {/* Bloque de asesoría */}
-        <Reveal className="mt-14">
+        <Reveal direction="zoom" className="mt-14">
           <div className="rounded-3xl bg-noir px-7 py-12 text-center text-ivory-50 sm:px-12">
             <h3 className="font-display text-2xl font-medium sm:text-3xl">
               ¿No sabes qué producto elegir?
