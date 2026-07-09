@@ -4,8 +4,11 @@
   "private": true,
   "description": "Landing premium para Elvis Rodríguez Peluquería — colorimetría y cuidado capilar en Cota, Cundinamarca",
   "scripts": {
+    "predev": "node scripts/sync-videos.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-videos.mjs",
     "build": "next build",
+    "sync-videos": "node scripts/sync-videos.mjs",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"

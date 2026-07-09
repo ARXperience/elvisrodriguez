@@ -1,33 +1,37 @@
 # Videos de Elvis Rodríguez
 
-Copia aquí los videos de la carpeta local:
+Copia aquí los videos de tu carpeta local:
 
 ```
 C:\Users\LENOVO\Downloads\VIDEOS-ELVIS
 ```
 
-## Nombres esperados
+En PowerShell, desde la carpeta del proyecto:
 
-La web busca estos archivos (definidos en `data/videos.ts`):
+```powershell
+Copy-Item "C:\Users\LENOVO\Downloads\VIDEOS-ELVIS\*" -Destination "public\videos\elvis\" -Recurse
+npm run dev
+```
 
-| Archivo | Uso | Formato recomendado |
-|---|---|---|
-| `hero.mp4` | Video de fondo del hero | Horizontal (16:9), sin audio necesario |
-| `hero.jpg` | Poster del hero (opcional) | Imagen 16:9 |
-| `transformacion-01.mp4` | Reel "Rubio luminoso" | Vertical (9:16) |
-| `transformacion-02.mp4` | Reel "Balayage natural" | Vertical (9:16) |
-| `transformacion-03.mp4` | Reel "Corrección de tono" | Vertical (9:16) |
-| `transformacion-04.mp4` | Reel "Corte y movimiento" | Vertical (9:16) |
-| `transformacion-05.mp4` | Reel "Color con cuidado capilar" | Vertical (9:16) |
-| `transformacion-06.mp4` | Reel "Transformación personalizada" | Vertical (9:16) |
+**No necesitas renombrar nada.** Al correr `npm run dev` (o `npm run build`),
+el script `scripts/sync-videos.mjs` detecta automáticamente los videos y los
+conecta a la web:
 
-Dos opciones:
+- Un archivo cuyo nombre contenga `hero`, `portada` o `principal` se usa como
+  **video de fondo del hero**. Si ninguno lo contiene, el hero usa su fondo
+  visual elegante (recomendado: renombra tu mejor video horizontal a
+  `hero.mp4`).
+- Los demás videos van a las cards de **"Transformaciones reales"**, en orden
+  alfabético, con los títulos curados ("Rubio luminoso", "Balayage natural",
+  etc.).
+- Una imagen con el mismo nombre que un video (ej. `mi-video.jpg` junto a
+  `mi-video.mp4`) se usa como poster de ese video.
+- Formatos soportados: `.mp4` (recomendado), `.webm`, `.mov`, `.m4v`.
+- Si un archivo falta o no carga, esa card muestra un placeholder visual
+  premium — la página nunca se rompe.
 
-1. **Renombrar tus videos** con estos nombres, o
-2. **Editar `data/videos.ts`** y cambiar los `src` por los nombres reales de tus archivos.
-
-Si un archivo no existe, la web muestra automáticamente un placeholder
-visual premium — la página nunca se rompe por un video faltante.
+Para cambiar qué título recibe cada video, edita el orden alfabético de los
+archivos (ej. prefijos `01-`, `02-`…) o ajusta `data/videos.ts`.
 
 ## Optimización recomendada
 
@@ -36,7 +40,7 @@ con [HandBrake](https://handbrake.fr/) o ffmpeg:
 
 ```bash
 # Reels verticales (9:16), calidad web:
-ffmpeg -i original.mp4 -vf "scale=720:-2" -c:v libx264 -crf 26 -preset slow -movflags +faststart -an transformacion-01.mp4
+ffmpeg -i original.mp4 -vf "scale=720:-2" -c:v libx264 -crf 26 -preset slow -movflags +faststart -an reel-01.mp4
 
 # Hero horizontal (16:9), sin audio:
 ffmpeg -i original.mp4 -vf "scale=1280:-2" -c:v libx264 -crf 27 -preset slow -movflags +faststart -an hero.mp4
@@ -46,5 +50,5 @@ Objetivo: cada reel por debajo de ~5 MB y el hero por debajo de ~8 MB.
 
 > Nota: los archivos `.mp4`, `.mov` y `.webm` de esta carpeta están en
 > `.gitignore` para no inflar el repositorio. Al hacer deploy (Vercel, etc.)
-> súbelos manualmente o quita esas líneas del `.gitignore` si prefieres
-> versionarlos.
+> quita esas líneas del `.gitignore` y commitea los videos comprimidos, o
+> súbelos a un almacenamiento externo.

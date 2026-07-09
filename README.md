@@ -34,13 +34,16 @@ npm run typecheck  # verificación de TypeScript
 ## Integrar los videos de Elvis
 
 Los videos **no están incluidos en el repositorio** (pesan demasiado para git).
-Cópialos desde tu carpeta local:
+Cópialos desde tu carpeta local — **con cualquier nombre, sin renombrar**:
 
-```
-C:\Users\LENOVO\Downloads\VIDEOS-ELVIS  →  public/videos/elvis/
+```powershell
+Copy-Item "C:\Users\LENOVO\Downloads\VIDEOS-ELVIS\*" -Destination "public\videos\elvis\" -Recurse
+npm run dev
 ```
 
-Sigue las instrucciones de nombres y compresión en
+Al iniciar, `scripts/sync-videos.mjs` detecta los videos automáticamente:
+el que contenga `hero` en el nombre va de fondo del hero y el resto a la
+galería "Transformaciones reales". Detalles y compresión recomendada en
 [`public/videos/elvis/README.md`](public/videos/elvis/README.md).
 Mientras los videos no existan, la web muestra placeholders visuales premium
 y no se rompe.
