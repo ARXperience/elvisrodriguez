@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { waLink, WA_MESSAGES } from "@/lib/whatsapp";
+import { withBase } from "@/lib/paths";
 import Reveal from "@/components/Reveal";
 import { MapPinIcon, WhatsAppIcon } from "@/components/icons";
 
@@ -12,7 +14,11 @@ export const SALON_ADDRESS =
  */
 const MAPS_DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SALON_ADDRESS)}`;
 
-/** Enlace de embed exacto de Google Maps (pendiente de confirmar con el cliente). */
+/**
+ * Enlace de embed exacto de Google Maps (opcional). Mientras sea null, la
+ * card muestra la imagen estática del mapa (/images/mapa-cota.jpg, generada
+ * con tiles de © OpenStreetMap contributors) y abre Google Maps al tocarla.
+ */
 const MAPS_EMBED_URL: string | null = null;
 
 export default function LocationSection() {
@@ -76,14 +82,20 @@ export default function LocationSection() {
                 href={MAPS_DIRECTIONS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex h-80 items-center justify-center overflow-hidden rounded-3xl border border-noir/10 bg-gradient-to-br from-ivory-200 via-ivory-300 to-gold-100 shadow-card lg:h-96"
+                className="group relative flex h-80 items-end justify-center overflow-hidden rounded-3xl border border-noir/10 shadow-card lg:h-96"
               >
-                <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_60%_40%,white,transparent_60%)]" />
-                <div className="relative flex flex-col items-center gap-3 px-8 text-center">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-noir text-gold-300 transition-transform group-hover:scale-110">
-                    <MapPinIcon className="h-8 w-8" />
+                <Image
+                  src={withBase("/images/mapa-cota.jpg")}
+                  alt="Mapa de Cota, Cundinamarca, con la ubicación del salón en la Variante Cota"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="relative mb-6 flex flex-col items-center gap-1.5 rounded-2xl bg-ivory-50/90 px-6 py-4 text-center shadow-card backdrop-blur-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-noir text-gold-300 transition-transform group-hover:scale-110">
+                    <MapPinIcon className="h-5 w-5" />
                   </span>
-                  <p className="font-display text-xl text-noir">
+                  <p className="font-display text-lg text-noir">
                     Variante Cota, Km 18 + 970 mts
                   </p>
                   <p className="text-sm text-noir-muted">
