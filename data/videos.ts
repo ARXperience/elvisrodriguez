@@ -71,8 +71,11 @@ const heroEntry =
   take((e) => e.kind === "salon" && isHorizontal(e)) ??
   take((e) => e.kind === "salon");
 
-// 2. Autoridad: estilista/colorista trabajando (horizontal).
+// 2. Autoridad: estilista/colorista trabajando. Se muestra en formato
+// vertical 9:16, así que se prefiere una versión vertical si existe.
 const craftEntry =
+  take((e) => e.orientation === "vertical" && /colorist|stylist|estilista|colorista/i.test(e.name)) ??
+  take((e) => e.kind === "people" && e.orientation === "vertical") ??
   take((e) => isHorizontal(e) && /colorist|stylist|estilista|colorista/i.test(e.name)) ??
   take((e) => e.kind === "people" && isHorizontal(e));
 

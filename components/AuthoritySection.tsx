@@ -29,11 +29,11 @@ export default function AuthoritySection() {
           /* Diseño editorial: video del trabajo real junto al mensaje */
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <Reveal direction="left">
-              <div className="relative overflow-hidden rounded-3xl border border-noir/5 shadow-card">
+              <div className="relative mx-auto w-full max-w-[340px] overflow-hidden rounded-3xl border border-noir/5 shadow-card sm:max-w-[380px] lg:mx-0">
                 <SmartVideo
                   src={craftVideo.src}
                   poster={craftVideo.poster}
-                  className="aspect-video w-full"
+                  className="aspect-[9/16] w-full"
                   fallbackGradient={craftVideo.gradient}
                   ambient
                 />
