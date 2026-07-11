@@ -24,7 +24,7 @@ export const services: Service[] = [
   },
   {
     id: "rubios",
-    image: "/images/servicio-rubios.jpg",
+    image: "/images/servicio-rubios-2.jpg",
     name: "Rubios",
     description:
       "Diseño de rubios con diagnóstico previo, cuidado capilar y mantenimiento profesional.",
@@ -33,7 +33,7 @@ export const services: Service[] = [
   },
   {
     id: "correccion-color",
-    image: "/images/servicio-correccion-color.jpg",
+    image: "/images/servicio-correccion-color-2.jpg",
     name: "Corrección de color",
     description:
       "Procesos técnicos para recuperar, equilibrar o transformar el tono del cabello de forma responsable.",
@@ -42,7 +42,7 @@ export const services: Service[] = [
   },
   {
     id: "tratamientos",
-    image: "/images/servicio-tratamientos.jpg",
+    image: "/images/servicio-tratamientos-2.jpg",
     name: "Tratamientos capilares",
     description:
       "Rutinas de reparación, hidratación y conservación para mantener el cabello saludable.",
