@@ -1,10 +1,22 @@
 import { waLink, WA_MESSAGES } from "@/lib/whatsapp";
 import Reveal from "@/components/Reveal";
+import SmartVideo from "@/components/SmartVideo";
 import { WhatsAppIcon } from "@/components/icons";
 
 export default function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-noir py-24 text-ivory-50 sm:py-32">
+    <section className="relative isolate overflow-hidden bg-noir py-24 text-ivory-50 sm:py-32">
+      {/* Video de fondo (stock libre de Mixkit, salón de belleza) */}
+      <div className="absolute inset-0 -z-10">
+        <SmartVideo
+          src="/videos/stock/valoracion-salon.mp4"
+          poster="/videos/stock/valoracion-salon.jpg"
+          className="h-full w-full"
+          fallbackGradient="from-noir via-noir-soft to-gold-700"
+          ambient
+        />
+        <div className="absolute inset-0 bg-noir/75" />
+      </div>
       <div
         className="absolute inset-0 opacity-40 [background-image:radial-gradient(circle_at_80%_20%,rgba(176,127,63,0.35),transparent_55%),radial-gradient(circle_at_15%_85%,rgba(179,113,74,0.25),transparent_50%)]"
         aria-hidden="true"
