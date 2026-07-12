@@ -186,6 +186,41 @@ const extraGradients = [
   "from-copper-400 via-ivory-300 to-gold-400",
 ];
 
+/**
+ * Reels verticales de relleno (stock libre de Mixkit, primeros planos que
+ * recortan bien a 9:16). Completan las filas de la grilla cuando hay más
+ * videos horizontales que verticales, para que no queden celdas vacías.
+ */
+const stockFillers: VideoItem[] = [
+  {
+    id: "stock-lavado",
+    src: "/videos/stock/reel-lavado.mp4",
+    poster: "/videos/stock/reel-lavado.jpg",
+    title: "Ritual de lavado",
+    subtitle: "Cuidado capilar profesional",
+    orientation: "vertical",
+    gradient: "from-ivory-300 via-gold-300 to-copper-500",
+  },
+  {
+    id: "stock-secado",
+    src: "/videos/stock/reel-secado.mp4",
+    poster: "/videos/stock/reel-secado.jpg",
+    title: "Secado y brillo",
+    subtitle: "Acabados con movimiento natural",
+    orientation: "vertical",
+    gradient: "from-gold-200 via-copper-400 to-gold-600",
+  },
+  {
+    id: "stock-rizos",
+    src: "/videos/stock/reel-rizos.mp4",
+    poster: "/videos/stock/reel-rizos.jpg",
+    title: "Textura y definición",
+    subtitle: "Belleza en cada tipo de cabello",
+    orientation: "vertical",
+    gradient: "from-noir-soft via-copper-500 to-gold-400",
+  },
+];
+
 function buildGallery(): VideoItem[] {
   // Sin videos: cards placeholder con los títulos curados.
   if (generatedVideoEntries.length === 0) {
@@ -197,7 +232,7 @@ function buildGallery(): VideoItem[] {
   }
 
   // El pool contiene lo que no se asignó a bloques destacados.
-  return pool.map((entry, i) => {
+  const items = pool.map((entry, i) => {
     const curated = galleryTitles[i];
     return toItem(entry, {
       id: curated?.id ?? `transformacion-${i + 1}`,
@@ -206,6 +241,23 @@ function buildGallery(): VideoItem[] {
       gradient: curated?.gradient ?? extraGradients[i % extraGradients.length],
     });
   });
+
+  // En la grilla de 3 columnas cada 16:9 ocupa 2 y cada 9:16 ocupa 1:
+  // una fila completa necesita un vertical por cada horizontal. Se agregan
+  // reels de relleno hasta equilibrar y se intercalan H-V para que cada
+  // fila quede llena, sin celdas vacías.
+  const horizontals = items.filter((v) => v.orientation === "horizontal");
+  const verticals = items.filter((v) => v.orientation === "vertical");
+  const missing = Math.max(0, horizontals.length - verticals.length);
+  verticals.push(...stockFillers.slice(0, missing));
+
+  const interleaved: VideoItem[] = [];
+  const max = Math.max(horizontals.length, verticals.length);
+  for (let i = 0; i < max; i++) {
+    if (horizontals[i]) interleaved.push(horizontals[i]);
+    if (verticals[i]) interleaved.push(verticals[i]);
+  }
+  return interleaved;
 }
 
 export const transformationVideos: VideoItem[] = buildGallery();

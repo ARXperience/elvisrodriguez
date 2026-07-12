@@ -89,7 +89,7 @@ export default function VideoGallery() {
         </Reveal>
 
         <div
-          className={`mt-12 grid gap-6 sm:grid-cols-2 ${
+          className={`mt-12 grid items-center gap-6 [grid-auto-flow:dense] sm:grid-cols-2 ${
             mixedGrid ? "lg:grid-cols-3" : ""
           }`}
         >
